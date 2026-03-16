@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shortlist — A build log by Nan Doud. How I designed and built an AI-powered job matching app from scratch." />
+  <meta name="description" content="Shortlist — A build log by Nan Doud. How I designed and built an AI-powered conversation-based job matching and progress tracking app from scratch." />
   <title>Shortlist — A Build Log | Nan Doud</title>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
@@ -243,7 +243,7 @@
   <div class="hero reveal">
     <span class="hero-kicker">Build Log — March 2026</span>
     <h1>I built a job search tool<br/>to solve <em>my own problem.</em><br/>Here's what happened.</h1>
-    <p class="hero-lede">Shortlist is an AI-powered job matching app I designed and built independently. This is the working record of how it came together — the decisions, the tradeoffs, the things that broke, and what I learned.</p>
+    <p class="hero-lede">Shortlist is an AI-powered conversation-based job matching app I designed and built independently. This is the working record of how it came together — the decisions, the tradeoffs, the things that broke, what I learned, and how I experienced its impact in real time.</p>
     <div class="hero-meta">
       <div class="meta-item">Nan Doud</div>
       <div class="meta-item" style="color:var(--rule)">—</div>
@@ -281,15 +281,15 @@
     <span class="section-num">01 — The Problem</span>
     <h2>Job search tools were built for databases. Not people.</h2>
 
-    <p>I've spent years inside product and operations teams watching how friction accumulates when nobody asks whether the flow actually works for the person using it. When I started job searching in earnest, I turned that same lens on the process itself.</p>
+    <p>I've spent years inside product and operations teams watching how friction accumulates when nobody asks whether the flow actually works for the person using it. When I started job searching in earnest recently, I turned that same lens on the process itself.</p>
 
-    <p>The tools were bad in a specific way. They let you pick a title from a dropdown and check "remote" and call that a search. They had no way to capture what I'd walk away from, or what kind of environment made me do my best work, or that I've been quietly drawn to automation-forward companies for years without quite knowing how to say it.</p>
+    <p>Traditional job boards are not human-optimized in a number of ways. They let you enter a title, select a few other preferences from dropdowns, and check "remote" and call that a search. They have no way to capture what I'd walk away from, or what kind of environment empowers me to do my best work, or that I've been quietly drawn to automation-forward companies for years without quite knowing how boil it all down.</p>
 
     <div class="pull-quote">
-      <p>"A job search should start with a real conversation, not a form. The thinking behind Shortlist is that simple."</p>
+      <p>"A job search should start with a conversation, not a form. The thinking behind Shortlist is that simple."</p>
     </div>
 
-    <p>So I built something that starts with a conversation instead. An AI coach interviews you about your actual experience, values, and preferences. It synthesizes that into a structured profile. Then it scores job listings against the whole picture and surfaces results with plain-language explanations. Everything runs locally on your machine. No account. No server.</p>
+    <p>So I built something that starts with a conversation instead. After uploading any documents you would like to have it take into consideeration (e.g., resumes, previous interview prep materials, etc.) An AI coach then interviews you about your actual experience, values, and preferences. It synthesizes that into a structured profile. Then it scores job listings against the whole picture and surfaces results with plain-language explanations. Currently, everything runs locally on your machine.</p>
 
     <div class="two-col">
       <div class="col-card">
@@ -326,11 +326,11 @@
     <p>Python and Flask on the backend. Plain HTML, CSS, and JavaScript on the front end with no framework. The Claude API powers the Coach conversation, profile synthesis, and job scoring. JSearch via RapidAPI pulls job listing data. Everything runs locally, packaged for distribution via PyInstaller.</p>
 
     <h3>Working with Claude Code</h3>
-    <p>I am not a software engineer. I want to be upfront about that. I used Claude Code extensively throughout this build. Claude Code is an agentic coding tool that writes, runs, and debugs code directly. My job was to think clearly about what I wanted, communicate it precisely, and make good decisions about what it produced.</p>
+    <p>I am not a software engineer. While I possess basic HTML and CSS skills, I want to be upfront about that. I used a combination of Claude chat and Claude Code extensively throughout this build. Claude Code is an agentic coding tool that writes, runs, and debugs code directly. My job was to think clearly about what I wanted, communicate it precisely, and make good decisions about what it produced. Using Claude chat to formulate the best possible prompts had me moving in the right direction and at the rapid clip of my ideation from the get go.</p>
 
     <p>That turned out to be most of the job.</p>
 
-    <p>Every feature in this app started as a prompt I wrote. A structured spec with clear behavior definitions, edge cases, implementation notes, and test criteria. I wrote hundreds of these over the course of the build.</p>
+    <p>Every feature in this app started as a conversation with Claude chat that led to a thorough prompt that fed Claude Code exactly what it needed to start building my idea into reality. I used Claude chat as a tutor to help me create strong prompts that included: A structured spec with clear behavior definitions, edge cases, implementation notes, and test criteria. In tandem with Claude chat, Iwrote hundreds of these over the course of the build.</p>
 
     <div class="callout">
       <p><strong>Writing a good Claude Code prompt requires the same skills as writing a good project brief.</strong> Clear problem framing, explicit success criteria, awareness of edge cases, and enough systems thinking to anticipate what could go wrong. The prompts are artifacts of structured thinking, not just instructions to a machine.</p>
@@ -374,10 +374,10 @@ IMPLEMENTATION NOTES
 - Manually evaluated jobs in My Shortlist tab are not affected</span>
     </div>
 
-    <h3>What I Was Actually Doing All Day</h3>
-    <p>On any given day I was doing some mix of identifying what wasn't working and figuring out why, writing prompts that specified what I wanted with enough precision that the output was actually usable, reviewing what got built, testing it, and deciding what to change next. I was also making product decisions about what to build, what to cut, and what the right UX pattern was. And I was writing all the copy — app UI, landing page, legal docs, LinkedIn posts. And designing two full visual themes.</p>
+    <h3>What I Am I Actually Doing All Day</h3>
+    <p>On any given day I am doing some mix of identifying what isn't working and figuring out why, writing prompts that specified what I want with enough precision that the output is actually usable, reviewing what got built, testing it, and deciding what to change next. I am also making product decisions about what to build, what to cut, and what the right UX pattern is. And I am writing copy — app UI, landing page, legal docs, LinkedIn posts. And designing two full visual themes.</p>
 
-    <p>This is not how most software gets built. But it taught me a lot about what clear thinking looks like in practice, and how much leverage you can get from communication skills when the tools are this capable.</p>
+    <p>This is obviously not how most software has historically been built at scale. But it is teaching me a lot about what clear thinking looks like in practice, and how much leverage you can get from communication skills when the tools are this capable.</p>
   </div>
 </div>
 
@@ -402,7 +402,7 @@ IMPLEMENTATION NOTES
     <p>The "Have you applied?" button took four attempts to get inside the card and functional. I'm including this because the debugging process — reading screenshots, identifying what was actually wrong versus what looked wrong, writing increasingly specific fix prompts — is a real skill that I got better at over the course of this project.</p>
 
     <h3>Decisions I Deferred Deliberately</h3>
-    <p>Windows support, PyInstaller packaging, and the Gumroad listing are all on the roadmap but not done. I made a deliberate call to keep building features rather than packaging for distribution while the product was still evolving. The product I'd have shipped two months ago was worse than what I have now.</p>
+    <p>Windows support, PyInstaller packaging, and the Gumroad listing are all on the roadmap but not done. I made a deliberate call to keep building features rather than packaging for distribution while the product was still evolving. The product I'd have shipped right away was nowhere near as robust as what I have now. The fact that it took me just a few weeks to get the product to the point it is at now speaks not only to the power of the tools both to brainstorm and build, but to the power of imagination and determination. <strong></strong>I haven't had this much fun in years!</strong> </p>
   </div>
 </div>
 
@@ -416,7 +416,7 @@ IMPLEMENTATION NOTES
       <div class="lesson-num">01</div>
       <div class="lesson-body">
         <h4>Precision is the skill.</h4>
-        <p>Vague prompts produce vague output. The difference between a prompt that works and one that doesn't is almost always specificity — about behavior, about edge cases, about what the output should look like and how it should fail gracefully. Writing a good prompt is a thinking exercise, not a writing exercise. You can't be precise about something you haven't thought through clearly.</p>
+        <p>Vague prompts produce vague output. The difference between a prompt that works and one that doesn't is almost always specificity — about behavior, about edge cases, about what the output should look like and how it should fail gracefully. Writing a good prompt is a thinking exercise, not a writing exercise. You can't be precise about something you haven't thought through clearly. For those who find this intimidating or difficult, combine the power of Claude chat with Claude Code and you will quickly begin learning how to compose prompts.</p>
       </div>
     </div>
 
@@ -494,7 +494,7 @@ IMPLEMENTATION NOTES
   <div class="about-block reveal">
     <div>
       <h2>Nan Doud</h2>
-      <p>Operations and communications professional based in East Peoria, IL. I've spent years inside product and operations teams at organizations ranging from SaaS startups to healthcare to real estate. I think clearly about systems, communicate precisely, and build things that work for real people.</p>
+      <p>Operations and communications professional based in Peoria, IL. I've spent years inside product and operations teams at organizations ranging from SaaS startups to healthcare. I think clearly about systems, communicate precisely, and build things that work for real people.</p>
       <p>Shortlist is the clearest demonstration I have of how I actually work.</p>
       <div class="about-links">
         <a href="https://linkedin.com/in/nan-doud" class="about-link" target="_blank" rel="noopener">↗ linkedin.com/in/nan-doud</a>
@@ -509,7 +509,6 @@ IMPLEMENTATION NOTES
         <span class="skill">UX design</span>
         <span class="skill">UX writing</span>
         <span class="skill">Systems thinking</span>
-        <span class="skill">Python / Flask</span>
         <span class="skill">HTML / CSS / JS</span>
         <span class="skill">Claude API</span>
         <span class="skill">Cross-functional thinking</span>
@@ -525,10 +524,10 @@ IMPLEMENTATION NOTES
   <footer>
     <div class="footer-left">
       <strong>Shortlist — A Build Log</strong>
-      Nan Doud, East Peoria IL — March 2026
+      Nan Doud, Peoria, IL — March 2026
     </div>
     <div class="footer-right">
-      Built with Python, Flask, and the Claude API.<br/>
+      Built with Python, Flask via the Claude API.<br/>
       Directed with a lot of carefully written prompts.
     </div>
   </footer>
