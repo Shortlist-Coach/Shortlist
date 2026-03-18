@@ -407,16 +407,16 @@ IMPLEMENTATION NOTES
 
 <p>The three-tab structure on the Evaluations page took several iterations to get right. Longlist, My Finds, My Shortlist. That progression reflects a real mental model and it matters.</p>
 
-<p>The Tracker was a late addition and it might be the most useful feature in the app. Moving from passive matching to active pipeline management, with interview tracking, interviewer profiles, a salary negotiation workspace, and a Lessons Learned field per role, closes a gap that no other tool I know of addresses cleanly.</p>
+<p>The Tracker was a late addition, and it might be the most useful feature in the app. Moving from passive matching to active pipeline management, with interview tracking, interviewer profiles, a salary negotiation workspace, and a Lessons Learned field per role, closes a gap that no other tool I know of addresses cleanly.</p>
 
     <h3>What I'm Still Fixing</h3>
     <p>Coach interactions are being refined for pacing and precision. Early versions were verbose in ways that felt more like being talked at than talked to. Current work involves tuning streaming speed, tightening response length, and adding contextual quick reply buttons so the conversation feels like a smart collaborator who knows where you are in the process.</p>
 
-<p>Longlist search reliability is an open problem. JSearch pulls from a broad index of job listings, but getting it to return strong, relevant results consistently has proven harder than expected. Diagnosing why is active work.</p>
+<p>Longlist search reliability is an open problem. While it is fully functional, it is limited by the number of calls permitted with a free RapidAPI account (200 calls per month). That's not a question of functionality, it's a question of ROI.</p>
 
 <p>Getting the Longlist right matters. It is the feature most people will reach for first, and an empty result screen is a bad first impression for a tool built around finding you the right job.</p>
     <h3>Decisions I Deferred Deliberately</h3>
-    <p>Windows support, PyInstaller packaging, and the Gumroad listing are all on the roadmap but not done. I made a deliberate call to keep building features rather than packaging for distribution while the product was still evolving. The product I'd have shipped right away was nowhere near as robust as what I have now. The fact that it took me just a few weeks to get the product to the point it is at now speaks not only to the power of the tools both to brainstorm and build, but to the power of imagination and determination. I haven't had this much fun in years.</p>
+    <p>Windows support, PyInstaller packaging, and the Gumroad listing are all on the roadmap, but not done. I decided to keep building features rather than packaging for distribution while the product is still in the very early evolutionary phases. The product I'd have shipped right away was nowhere near as robust as what I have now. The fact that it took me just a few weeks to get the product to where it is now speaks not only to the power of the AI collaboration, both to brainstorm and build, but to the power of imagination and determination when technology finally catches up to how your mind works. I haven't had this much fun in years!</p>
   </div>
 </div>
 
@@ -430,7 +430,7 @@ IMPLEMENTATION NOTES
   <div class="lesson-num">01</div>
   <div class="lesson-body">
     <h4>Precision is the skill.</h4>
-    <p>Vague prompts produce vague output. Specificity is the skill, not vocabulary or technical knowledge. You can't be precise about something you haven't thought through clearly.</p>
+    <p>Vague prompts produce vague output. Specificity is crucial, whether you directly author the prompts yourself or in thought partnership with Claude. You can't be precise about something you haven't thought through clearly. Talking out the goal and your perceived concerns about how to get there will help you figure out how to compose your prompts.</p>
   </div>
 </div>
 
@@ -438,15 +438,15 @@ IMPLEMENTATION NOTES
   <div class="lesson-num">02</div>
   <div class="lesson-body">
     <h4>Systems break at the seams.</h4>
-    <p>Almost every bug happened at the boundary between two features. Keeping a mental model of how the whole thing fit together turned out to matter as much as writing good individual prompts.</p>
+    <p>Almost every bug happened at the boundary between two features. Keeping a mental model of how the whole thing fits together matters as much as writing good individual prompts.</p>
   </div>
 </div>
 
 <div class="lesson">
   <div class="lesson-num">03</div>
   <div class="lesson-body">
-    <h4>Ship the thing that's wrong and then fix it.</h4>
-    <p>A thing that exists and is wrong is more useful than a perfect spec for something that doesn't. I iterated fastest on the features I could actually look at, react to honestly, and fix specifically.</p>
+    <h4>Ship the wrong thing and then fix it.</h4>
+    <p>Shipping something wrong and fixing it beats planning something perfect that never ships.</p>
   </div>
 </div>
 
@@ -462,10 +462,17 @@ IMPLEMENTATION NOTES
   <div class="lesson-num">05</div>
   <div class="lesson-body">
     <h4>Design for the failure modes, not just the happy path.</h4>
-    <p>The most important AI design decision I made was making the profile fully editable. Coach synthesizes well but it also overstates and occasionally invents details that sound plausible. For something as consequential as how a person represents themselves to a potential employer, that's not acceptable. Putting the user in control of the final output was the only right answer.</p>
+    <p>The most important early AI design decision I made was making the profile fully editable. Coach synthesizes well, but it also overstates and <em>occasionally</em> invents details that may sound plausible. For something as consequential as how a person represents themselves to a potential employer, that's not cool. Putting the human in control of the final output was the right choice.</p>
   </div>
 </div>
-
+    
+<div class="lesson">
+  <div class="lesson-num">06</div>
+  <div class="lesson-body">
+    <h4>Design your AI solution to meet humans where they are.</h4>
+    <p>No one can argue the astonishing speed and wealth of helpful information a brief interaction with an AI assistant can offer. But just because AI is capable of fronting a wall of useful text in a .3 milliseconds doesn't mean a human can fully absorb or appreciate the volume and speed. Tuning the speed of Coach and training it to meter its communication for better human-grade consumption made a huge difference in how approachable the whole experience is.</p>
+  </div>
+</div>
     
 <!-- ABOUT -->
 <div class="container">
