@@ -426,48 +426,47 @@ IMPLEMENTATION NOTES
     <span class="section-num">04 — What I Learned</span>
     <h2>The things I'd tell myself at the start.</h2>
 
-    <div class="lesson">
-      <div class="lesson-num">01</div>
-      <div class="lesson-body">
-        <h4>Precision is the skill.</h4>
-        <p>Vague prompts produce vague output. The difference between a prompt that works and one that doesn't is almost always specificity — about behavior, about edge cases, about what the output should look like and how it should fail gracefully. Writing a good prompt is a thinking exercise, not a writing exercise. You can't be precise about something you haven't thought through clearly. For those who find this intimidating or difficult, combine the power of Claude chat with Claude Code and you will quickly begin learning how to compose prompts.</p>
-      </div>
-    </div>
-
-    <div class="lesson">
-      <div class="lesson-num">02</div>
-      <div class="lesson-body">
-        <h4>Systems break at the seams.</h4>
-        <p>Almost every bug I encountered happened at the boundary between two features — where a new prompt touched code that a previous prompt had written. Keeping a mental model of how the whole thing fit together was as important as writing good individual prompts. The more the codebase grew, the more I had to think like a systems architect rather than a feature writer.</p>
-      </div>
-    </div>
-
-    <div class="lesson">
-      <div class="lesson-num">03</div>
-      <div class="lesson-body">
-        <h4>Ship the thing that's wrong and then fix it.</h4>
-        <p>I spent too long on some features trying to get them right before they were visible. The features I iterated fastest on were the ones I looked at in the actual app, reacted to honestly, and fixed specifically. Screenshots serve as visual explainers that I can provide to Claude chat and serve as better feedback for the next prompt than text alone. A thing that exists and is wrong is more useful than a perfect spec for something that doesn't.</p>
-      </div>
-    </div>
-
-    <div class="lesson">
-      <div class="lesson-num">04</div>
-      <div class="lesson-body">
-        <h4>Good UX writing is a product decision.</h4>
-        <p>Every label, every empty state, every error message is a decision about what the user believes the product does. With the help of Claude, I wrote all of it, which meant I had to think carefully about all of it. "Have you applied?" is a better label than "Update status" because it meets the user where they are instead of asking them to learn the app's language. These decisions compound.</p>
-      </div>
-    </div>
-
-    <div class="lesson">
-      <div class="lesson-num">05</div>
-      <div class="lesson-body">
-        <h4>Design for the failure modes, not just the happy path.</h4>
-        <p>The most important AI design decision I made was making the user's profile fully editable. Coach synthesizes well, but it also generalizes, occasionally overstates, and sometimes fills in gaps with plausible-sounding details that aren't accurate. For something as consequential as how a person represents themselves to a potential employer, that's not acceptable. Putting the user in control of the final output is the right answer. Knowing when to trust AI and when to verify it is the real skill. Building a product that makes verification the default is how you make that call for your users before they have to make it themselves.</p>
-      </div>
-    </div>
+   <div class="lesson">
+  <div class="lesson-num">01</div>
+  <div class="lesson-body">
+    <h4>Precision is the skill.</h4>
+    <p>Vague prompts produce vague output. Specificity is the skill, not vocabulary or technical knowledge. You can't be precise about something you haven't thought through clearly.</p>
   </div>
 </div>
 
+<div class="lesson">
+  <div class="lesson-num">02</div>
+  <div class="lesson-body">
+    <h4>Systems break at the seams.</h4>
+    <p>Almost every bug happened at the boundary between two features. Keeping a mental model of how the whole thing fit together turned out to matter as much as writing good individual prompts.</p>
+  </div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-num">03</div>
+  <div class="lesson-body">
+    <h4>Ship the thing that's wrong and then fix it.</h4>
+    <p>A thing that exists and is wrong is more useful than a perfect spec for something that doesn't. I iterated fastest on the features I could actually look at, react to honestly, and fix specifically.</p>
+  </div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-num">04</div>
+  <div class="lesson-body">
+    <h4>Good UX writing is a product decision.</h4>
+    <p>Every label, every empty state, every error message is a decision about what the user believes the product does. "Have you applied?" is a better label than "Update status" because it meets the user where they are. These decisions compound.</p>
+  </div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-num">05</div>
+  <div class="lesson-body">
+    <h4>Design for the failure modes, not just the happy path.</h4>
+    <p>The most important AI design decision I made was making the profile fully editable. Coach synthesizes well but it also overstates and occasionally invents details that sound plausible. For something as consequential as how a person represents themselves to a potential employer, that's not acceptable. Putting the user in control of the final output was the only right answer.</p>
+  </div>
+</div>
+
+    
 <!-- ABOUT -->
 <div class="container">
   <div class="about-block reveal">
