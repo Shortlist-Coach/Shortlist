@@ -272,11 +272,11 @@
       0%, 100% { filter: drop-shadow(0 0 4px rgba(180,240,255,0.18)); }
       50%       { filter: drop-shadow(0 0 10px rgba(180,240,255,0.34)); }
     }
-    .aura-band  { stroke-dasharray: 370 375; animation: travelBand 9s linear infinite; filter: blur(11px); opacity: 0.5; }
+    .aura-band  { stroke-dasharray: 370 375; animation: travelBand 9s linear infinite; opacity: 0.5; }
     .aura-cyan  { animation-delay: 0s; }
     .aura-pink  { animation-delay: -3s; }
     .aura-yellow{ animation-delay: -6s; }
-    .liquid-band  { stroke-dasharray: 310 435; animation: travelBand 9s linear infinite; filter: blur(4px); }
+    .liquid-band  { stroke-dasharray: 310 435; animation: travelBand 9s linear infinite; }
     .liquid-cyan  { animation-delay: 0s; }
     .liquid-pink  { animation-delay: -3s; }
     .liquid-yellow{ animation-delay: -6s; }
@@ -405,20 +405,26 @@
       <div class="sl-bubble-wrap">
         <svg class="sl-bubble" viewBox="0 0 215 208" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
           <defs>
-            <path id="bp" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+            <!-- SVG filters: reliable on all browsers including iOS Safari -->
+            <filter id="f-aura" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="11"/>
+            </filter>
+            <filter id="f-liq" x="-15%" y="-15%" width="130%" height="130%">
+              <feGaussianBlur stdDeviation="4"/>
+            </filter>
           </defs>
-          <!-- Outer aura — thick + blurred, rendered behind fill so glow bleeds outward -->
-          <use href="#bp" class="aura-band aura-cyan"   fill="none" stroke="#00e5ff" stroke-width="14" stroke-linejoin="round"/>
-          <use href="#bp" class="aura-band aura-pink"   fill="none" stroke="#ff2d78" stroke-width="14" stroke-linejoin="round"/>
-          <use href="#bp" class="aura-band aura-yellow" fill="none" stroke="#f5e642" stroke-width="14" stroke-linejoin="round"/>
-          <!-- Dark fill covers interior, clipping inner half of aura -->
-          <use href="#bp" fill="#0b0c1a" stroke="none"/>
-          <!-- Liquid bands on top of fill — blur bleeds ~2px inside border -->
-          <use href="#bp" class="liquid-band liquid-cyan"   fill="none" stroke="#00e5ff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-          <use href="#bp" class="liquid-band liquid-pink"   fill="none" stroke="#ff2d78" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-          <use href="#bp" class="liquid-band liquid-yellow" fill="none" stroke="#f5e642" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-          <!-- Crisp white outline on top for definition -->
-          <use href="#bp" fill="none" stroke="rgba(232,234,246,0.7)" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Outer aura — inline <path> avoids iOS <use>+filter bug -->
+          <path class="aura-band aura-cyan"   filter="url(#f-aura)" fill="none" stroke="#00e5ff" stroke-width="14" stroke-linejoin="round" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+          <path class="aura-band aura-pink"   filter="url(#f-aura)" fill="none" stroke="#ff2d78" stroke-width="14" stroke-linejoin="round" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+          <path class="aura-band aura-yellow" filter="url(#f-aura)" fill="none" stroke="#f5e642" stroke-width="14" stroke-linejoin="round" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+          <!-- Dark fill -->
+          <path fill="#0b0c1a" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+          <!-- Liquid bands -->
+          <path class="liquid-band liquid-cyan"   filter="url(#f-liq)" fill="none" stroke="#00e5ff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+          <path class="liquid-band liquid-pink"   filter="url(#f-liq)" fill="none" stroke="#ff2d78" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+          <path class="liquid-band liquid-yellow" filter="url(#f-liq)" fill="none" stroke="#f5e642" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
+          <!-- Crisp white outline -->
+          <path fill="none" stroke="rgba(232,234,246,0.7)" stroke-width="1.5" stroke-linejoin="round" d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"/>
           <!-- SL -->
           <text class="sl-text"
             x="107" y="86"
