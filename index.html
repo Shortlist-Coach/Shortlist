@@ -267,17 +267,12 @@
     .hero-graphic { display: flex; align-items: center; justify-content: center; }
     .sl-bubble-wrap { width: 100%; max-width: 260px; padding: 20px; }
     .sl-bubble { width: 100%; height: auto; overflow: visible; display: block; }
-    .sl-bubble-path { animation: neonGlow 7s ease-in-out infinite; }
-    @keyframes neonGlow {
-      0%   { filter: drop-shadow(0 0 5px #00e5ff)  drop-shadow(0 0 16px rgba(0,229,255,0.55))  drop-shadow(0 0 38px rgba(0,229,255,0.22)); }
-      14%  { filter: drop-shadow(0 0 11px #00e5ff) drop-shadow(0 0 30px rgba(0,229,255,0.82))  drop-shadow(0 0 56px rgba(0,229,255,0.4)); }
-      28%  { filter: drop-shadow(0 0 4px #00e5ff)  drop-shadow(0 0 13px rgba(0,229,255,0.42))  drop-shadow(0 0 28px rgba(0,229,255,0.18)); }
-      43%  { filter: drop-shadow(0 0 5px #ff2d78)  drop-shadow(0 0 16px rgba(255,45,120,0.55)) drop-shadow(0 0 38px rgba(255,45,120,0.22)); }
-      57%  { filter: drop-shadow(0 0 12px #ff2d78) drop-shadow(0 0 32px rgba(255,45,120,0.82)) drop-shadow(0 0 58px rgba(255,45,120,0.4)); }
-      71%  { filter: drop-shadow(0 0 5px #f5e642)  drop-shadow(0 0 16px rgba(245,230,66,0.55)) drop-shadow(0 0 38px rgba(245,230,66,0.22)); }
-      86%  { filter: drop-shadow(0 0 10px #f5e642) drop-shadow(0 0 28px rgba(245,230,66,0.82)) drop-shadow(0 0 52px rgba(245,230,66,0.4)); }
-      100% { filter: drop-shadow(0 0 5px #00e5ff)  drop-shadow(0 0 16px rgba(0,229,255,0.55))  drop-shadow(0 0 38px rgba(0,229,255,0.22)); }
+    .bubble-glow { animation: softPulse 3.5s ease-in-out infinite; }
+    @keyframes softPulse {
+      0%, 100% { filter: drop-shadow(0 0 3px rgba(180,240,255,0.32)); }
+      50%       { filter: drop-shadow(0 0 7px rgba(180,240,255,0.52)); }
     }
+    .sl-text { filter: drop-shadow(0 0 5px rgba(255,230,0,0.7)) drop-shadow(0 0 14px rgba(255,230,0,0.28)); }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -369,23 +364,33 @@
     </div>
     <div class="hero-graphic" aria-hidden="true">
       <div class="sl-bubble-wrap">
-        <svg class="sl-bubble" viewBox="0 0 215 208" xmlns="http://www.w3.org/2000/svg">
-          <path class="sl-bubble-path"
-            d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"
-            fill="#0b0c1a"
-            stroke="rgba(232,234,246,0.88)"
-            stroke-width="2.5"
-            stroke-linejoin="round"
-          />
-          <text
-            x="107" y="90"
+        <svg class="sl-bubble" viewBox="0 0 215 208" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+          <defs>
+            <linearGradient id="neonBand" gradientUnits="userSpaceOnUse" x1="107" y1="0" x2="107" y2="215">
+              <stop offset="0%"   stop-color="#00e5ff"/>
+              <stop offset="33%"  stop-color="#ff2d78"/>
+              <stop offset="66%"  stop-color="#f5e642"/>
+              <stop offset="100%" stop-color="#00e5ff"/>
+              <animateTransform attributeName="gradientTransform" type="rotate"
+                from="0 107 86" to="360 107 86" dur="5s" repeatCount="indefinite"/>
+            </linearGradient>
+          </defs>
+          <!-- Fill -->
+          <path d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z" fill="#0b0c1a"/>
+          <!-- Liquid neon band outline -->
+          <g class="bubble-glow">
+            <path d="M 29,7 H 185 A 22,22 0 0,1 207,29 V 143 A 22,22 0 0,1 185,165 H 70 L 9,198 L 29,165 A 22,22 0 0,1 7,143 V 29 A 22,22 0 0,1 29,7 Z"
+              fill="none" stroke="url(#neonBand)" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+          <!-- SL -->
+          <text class="sl-text"
+            x="107" y="86"
             text-anchor="middle"
             dominant-baseline="central"
-            font-family="'Space Mono', monospace"
-            font-size="86"
+            font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+            font-size="128"
             font-weight="700"
-            fill="#f5e642"
-            letter-spacing="4"
+            fill="#ffe600"
           >SL</text>
         </svg>
       </div>
